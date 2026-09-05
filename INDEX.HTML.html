@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Countdown SPM 2026 — SMK Tengku Lela Segara</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#f7f9fc,#eef3f8);color:#172033}
+.wrap{max-width:1100px;margin:auto;padding:28px 18px 40px}.school{text-align:center;font-weight:800;letter-spacing:1px}.badge{display:inline-block;margin:12px auto;background:#172033;color:#fff;padding:7px 14px;border-radius:999px;font-size:12px;letter-spacing:1.5px;display:block;width:max-content}
+h1{text-align:center;margin:8px 0 4px;font-size:clamp(30px,6vw,54px);letter-spacing:1px}.sub{text-align:center;color:#566176;margin-bottom:26px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.card{background:#fff;border:1px solid #e2e7ef;border-radius:18px;padding:20px;box-shadow:0 8px 25px #17203312;cursor:pointer;transition:.2s;position:relative}.card:hover{transform:translateY(-3px);box-shadow:0 12px 30px #17203320}.card:after{content:"KLIK UNTUK INFO";position:absolute;right:14px;top:12px;font-size:9px;color:#7b8494;letter-spacing:1px}
+.label{font-weight:800;line-height:1.3;padding-top:8px}.date{margin:12px 0 4px;font-size:13px;color:#536075}.days{font-size:48px;font-weight:900;margin-top:6px}.lagi{text-transform:uppercase;letter-spacing:2px;font-size:11px;color:#697386}.footer{text-align:center;margin:28px 0 8px;font-size:19px;font-weight:800}.today{text-align:center;color:#7a8494;font-size:12px}
+
+.modal{display:none;position:fixed;inset:0;background:#101827b8;padding:18px;z-index:10;overflow:auto}.modal.show{display:block}.panel{max-width:850px;margin:30px auto;background:#fff;border-radius:22px;padding:25px;box-shadow:0 20px 60px #0004}.close{float:right;border:0;background:#edf1f6;border-radius:50%;width:36px;height:36px;font-size:20px;cursor:pointer}.panel h2{margin:0 45px 5px 0;font-size:28px}.panel .modaldate{color:#687386;margin-bottom:18px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.tab{border:0;background:#edf1f6;padding:9px 13px;border-radius:10px;font-weight:700;cursor:pointer}.tab.active{background:#172033;color:#fff}.info{background:#f7f9fc;border-radius:15px;padding:18px;line-height:1.65}.info h3{margin:0 0 8px}.info ul{margin:8px 0 0 20px;padding:0}.note{margin-top:14px;padding:12px 14px;background:#fff8df;border-left:4px solid #e3b400;border-radius:8px;font-size:13px}.mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px}.mini{background:#fff;border:1px solid #e2e7ef;border-radius:12px;padding:13px}.mini b{display:block;margin-bottom:4px}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.grid,.mini-grid{grid-template-columns:1fr}.card{padding:17px}.days{font-size:40px}.panel{padding:19px}}
+
+.subjects{margin-top:28px;background:#fff;border:1px solid #e2e7ef;border-radius:20px;padding:22px;box-shadow:0 8px 25px #17203312}
+.subjects h2{text-align:center;margin:0 0 5px}.subjects p{text-align:center;color:#687386;font-size:13px;margin:0 0 16px}
+.subject-list{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.subject{border:1px solid #e2e7ef;border-radius:12px;padding:13px;background:#f8fafc;font-weight:800;cursor:pointer}
+.subject small{display:block;color:#687386;font-weight:500;margin-top:4px}
+@media(max-width:700px){.subject-list{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="school">SMK TENGKU LELA SEGARA</div>
+  <div class="badge">ROAD TO SPM 2026 • INFO INTERAKTIF</div>
+  <h1>COUNTDOWN SPM 2026</h1>
+  <div class="sub">Klik mana-mana tarikh untuk mendapatkan maklumat, panduan ulang kaji dan tips persediaan.</div>
+
+  <div class="grid">
+    <div class="card" onclick="openInfo('bm')"><div class="label">Ujian Bertutur Bahasa Melayu</div><div class="date">26 Oktober 2026</div><div class="days" id="bm">—</div><div class="lagi">hari lagi</div></div>
+    <div class="card" onclick="openInfo('bi')"><div class="label">Ujian Bertutur Bahasa Inggeris</div><div class="date">2 November 2026</div><div class="days" id="bi">—</div><div class="lagi">hari lagi</div></div>
+    <div class="card" onclick="openInfo('amali')"><div class="label">Ujian Amali</div><div class="date">16 November 2026</div><div class="days" id="amali">—</div><div class="lagi">hari lagi</div></div>
+    <div class="card" onclick="openInfo('bertulis')"><div class="label">Peperiksaan Bertulis &amp; Ujian Mendengar</div><div class="date">23 November 2026</div><div class="days" id="bertulis">—</div><div class="lagi">hari lagi</div></div>
+  </div>
+
+
+  <section class="subjects">
+    <h2>🎯 Subjek SPM Calon SMKTLS</h2>
+    <p>Klik subjek untuk melihat fokus ulang kaji, teknik menjawab dan tip persediaan. Senarai ini khusus kepada subjek yang Cikgu nyatakan untuk calon SMKTLS.</p>
+    <div class="subject-list">
+      <div class="subject" onclick="openSubject('bm')">Bahasa Melayu <small>Kertas 1 &amp; 2</small></div>
+      <div class="subject" onclick="openSubject('bi')">Bahasa Inggeris <small>Kertas 1 &amp; 2</small></div>
+      <div class="subject" onclick="openSubject('sej')">Sejarah <small>Kertas 1 &amp; 2</small></div>
+      <div class="subject" onclick="openSubject('mt')">Matematik <small>Kertas 1 &amp; 2</small></div>
+      <div class="subject" onclick="openSubject('sains')">Sains <small>Kertas 1 &amp; 2</small></div>
+      <div class="subject" onclick="openSubject('pi')">Pendidikan Islam <small>Rujuk format rasmi</small></div>
+      <div class="subject" onclick="openSubject('fizik')">Fizik <small>Kertas 1 &amp; 2</small></div>
+      <div class="subject" onclick="openSubject('kimia')">Kimia <small>Kertas 1 &amp; 2</small></div>
+      <div class="subject" onclick="openSubject('bio')">Biologi <small>Kertas 1 &amp; 2</small></div>
+      <div class="subject" onclick="openSubject('sat')">Sains Tambahan <small>Kertas 1 &amp; 2</small></div>
+      <div class="subject" onclick="openSubject('sps')">Sains Sukan <small>Kertas 1 &amp; 2</small></div>
+      <div class="subject" onclick="openSubject('psv')">Pendidikan Seni Visual <small>Kertas 1 &amp; 2</small></div>
+      <div class="subject" onclick="openSubject('pert')">Pertanian <small>Kertas 1 &amp; 2</small></div>
+      <div class="subject" onclick="openSubject('srt')">Sains Rumah Tangga <small>Kertas 1 &amp; 2</small></div>
+      <div class="subject" onclick="openSubject('niaga')">Perniagaan <small>Kertas 1 &amp; 2</small></div>
+      <div class="subject" onclick="openSubject('akaun')">Prinsip Perakaunan <small>Kertas 1 &amp; 2</small></div>
+      <div class="subject" onclick="openSubject('addmath')">Matematik Tambahan <small>Kertas 1 &amp; 2</small></div>
+    </div>
+  </section>
+
+  <div class="footer">“Usaha hari ini, kejayaan esok.”</div>
+  <div class="today" id="today"></div>
+</div>
+
+
+<div class="modal" id="subjectModal" onclick="if(event.target===this)closeSubject()">
+  <div class="panel">
+    <button class="close" onclick="closeSubject()">×</button>
+    <h2 id="subjectTitle"></h2>
+    <div id="subjectInfo" class="info"></div>
+  </div>
+</div>
+<div class="modal" id="modal" onclick="if(event.target===this)closeInfo()">
+  <div class="panel">
+    <button class="close" onclick="closeInfo()">×</button>
+    <h2 id="modalTitle"></h2><div class="modaldate" id="modalDate"></div>
+    <div class="tabs">
+      <button class="tab active" onclick="showTab('jadual',this)">📅 Jadual</button>
+      <button class="tab" onclick="showTab('ulang',this)">📚 Ulang Kaji</button>
+      <button class="tab" onclick="showTab('tips',this)">⭐ Tips Persediaan</button>
+    </div>
+    <div id="info" class="info"></div>
+  </div>
+</div>
+
+<script>
+const dates={bm:"2026-10-26",bi:"2026-11-02",amali:"2026-11-16",bertulis:"2026-11-23"};
+const data={
+ bm:{title:"Ujian Bertutur Bahasa Melayu",date:"26 Oktober 2026",
+  jadual:`<h3>Maklumat Ujian</h3><div class="mini-grid"><div class="mini"><b>Tarikh</b>26 Oktober 2026</div><div class="mini"><b>Fokus</b>Ujian bertutur Bahasa Melayu</div></div><div class="note">Semak jadual giliran, masa dan arahan rasmi yang dikeluarkan oleh sekolah.</div>`,
+  ulang:`<h3>Panduan Ulang Kaji</h3><ul><li>Latih sebutan, intonasi dan kelancaran.</li><li>Sediakan isi penting mengikut tema dan isu semasa.</li><li>Latih bercakap dalam tempoh masa yang ditetapkan.</li><li>Rakam latihan dan semak sebutan serta susunan idea.</li></ul>`,
+  tips:`<h3>Tips Persediaan</h3><ul><li>Datang awal dan bawa keperluan yang ditetapkan.</li><li>Tarik nafas dan baca arahan dengan teliti.</li><li>Bercakap dengan yakin, jelas dan sopan.</li><li>Jika tersangkut, berhenti seketika dan sambung dengan tenang.</li></ul>`},
+ bi:{title:"Ujian Bertutur Bahasa Inggeris",date:"2 November 2026",
+  jadual:`<h3>Maklumat Ujian</h3><div class="mini-grid"><div class="mini"><b>Tarikh</b>2 November 2026</div><div class="mini"><b>Fokus</b>Speaking Bahasa Inggeris</div></div><div class="note">Semak jadual giliran, masa dan arahan rasmi yang dikeluarkan oleh sekolah.</div>`,
+  ulang:`<h3>Panduan Ulang Kaji</h3><ul><li>Latih bercakap berdasarkan topik lazim.</li><li>Ulang kaji kosa kata dan frasa yang sesuai.</li><li>Latih membina jawapan dengan pembukaan, isi dan penutup.</li><li>Berlatih bersama rakan secara bergilir.</li></ul>`,
+  tips:`<h3>Tips Persediaan</h3><ul><li>Utamakan kelancaran dan sebutan yang jelas.</li><li>Gunakan ayat yang anda benar-benar kuasai.</li><li>Dengar soalan dengan teliti sebelum menjawab.</li><li>Jangan panik jika tersilap; betulkan dan teruskan.</li></ul>`},
+ amali:{title:"Ujian Amali",date:"16 November 2026",
+  jadual:`<h3>Maklumat Ujian</h3><div class="mini-grid"><div class="mini"><b>Tarikh</b>16 November 2026</div><div class="mini"><b>Fokus</b>Ujian amali mata pelajaran berkaitan</div></div><div class="note">Rujuk jadual rasmi sekolah dan arahan makmal/bengkel yang diberikan kepada calon.</div>`,
+  ulang:`<h3>Panduan Ulang Kaji</h3><ul><li>Ulang kaji prosedur eksperimen dan langkah kerja.</li><li>Fahami tujuan, pemboleh ubah, pemerhatian dan kesimpulan.</li><li>Latih merekod data serta membuat pengiraan dengan kemas.</li><li>Kenal pasti langkah keselamatan sebelum menjalankan amali.</li></ul>`,
+  tips:`<h3>Tips Persediaan</h3><ul><li>Baca arahan sebelum memulakan tugasan.</li><li>Susun peralatan dan bahan dengan teratur.</li><li>Jaga keselamatan serta kebersihan ruang kerja.</li><li>Semak jawapan dan catatan sebelum tamat.</li></ul>`},
+ bertulis:{title:"Peperiksaan Bertulis & Ujian Mendengar",date:"23 November 2026",
+  jadual:`<h3>Maklumat Peperiksaan</h3><div class="mini-grid"><div class="mini"><b>Tarikh mula</b>23 November 2026</div><div class="mini"><b>Komponen</b>Peperiksaan bertulis &amp; ujian mendengar</div></div><div class="note">Jadual mata pelajaran lengkap hendaklah dirujuk kepada jadual rasmi SPM yang diberikan kepada calon.</div>`,
+  ulang:`<h3>Panduan Ulang Kaji</h3><ul><li>Bina jadual ulang kaji mengikut mata pelajaran dan keutamaan.</li><li>Utamakan topik yang belum dikuasai.</li><li>Buat latihan soalan peperiksaan dan semak kesalahan.</li><li>Gunakan teknik ulang kaji aktif: peta minda, kuiz kendiri dan penerangan semula.</li><li>Pastikan rehat dan tidur mencukupi.</li></ul>`,
+  tips:`<h3>Tips Persediaan</h3><ul><li>Sediakan alat tulis dan dokumen yang diperlukan lebih awal.</li><li>Semak jadual peperiksaan setiap malam.</li><li>Datang awal dan kekalkan rutin yang tenang.</li><li>Semasa menjawab, baca arahan dan urus masa dengan baik.</li><li>Fokus pada kertas yang sedang dijawab — satu langkah pada satu masa.</li></ul>`}
+};
+let current="bm";
+function left(s){let n=new Date(),a=new Date(n.getFullYear(),n.getMonth(),n.getDate()),p=s.split("-").map(Number),b=new Date(p[0],p[1]-1,p[2]);return Math.max(0,Math.ceil((b-a)/86400000))}
+function update(){for(const k in dates)document.getElementById(k).textContent=left(dates[k]);document.getElementById("today").textContent="Kiraan dikemas kini secara automatik • "+new Intl.DateTimeFormat("ms-MY",{day:"numeric",month:"long",year:"numeric"}).format(new Date())}
+function openInfo(k){current=k;document.getElementById("modalTitle").textContent=data[k].title;document.getElementById("modalDate").textContent=data[k].date;document.getElementById("modal").classList.add("show");document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));document.querySelector(".tab").classList.add("active");document.getElementById("info").innerHTML=data[k].jadual}
+function showTab(tab,btn){document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));btn.classList.add("active");document.getElementById("info").innerHTML=data[current][tab]}
+function closeInfo(){document.getElementById("modal").classList.remove("show")}
+
+const subjectData={
+ bm:{title:"Bahasa Melayu — Kertas 1 & 2",html:"<h3>Fokus Ulang Kaji</h3><ul><li>Kertas 1: bina isi, huraian, contoh dan penutup yang tersusun.</li><li>Kertas 2: pemahaman, rumusan dan tatabahasa mengikut kehendak soalan.</li><li>Latih karangan dan semak kesalahan bahasa.</li></ul><h3>Tip</h3><p>Gunakan latihan berjadual dan catat kesalahan untuk diperbaiki.</p>"},
+ bi:{title:"Bahasa Inggeris — Kertas 1 & 2",html:"<h3>Fokus Ulang Kaji</h3><ul><li>Reading: kenal pasti kata kunci dan bukti jawapan.</li><li>Writing: bina idea dengan struktur yang jelas.</li><li>Perkukuh vocabulary dan grammar.</li></ul><h3>Tip</h3><p>Latih reading dan writing secara konsisten serta semak kesalahan.</p>"},
+ sej:{title:"Sejarah — Kertas 1 & 2",html:"<h3>Fokus Ulang Kaji</h3><ul><li>Fahami fakta, tokoh, sebab, kesan dan kronologi.</li><li>Latih soalan objektif dan struktur/esei.</li><li>Berikan perhatian kepada soalan KBAT.</li></ul><h3>Tip</h3><p>Gunakan garis masa dan peta minda; cuba terangkan semula tanpa melihat nota.</p>"},
+ mt:{title:"Matematik — Kertas 1 & 2",html:"<h3>Fokus Ulang Kaji</h3><ul><li>Fahami formula dan penggunaannya.</li><li>Buat latihan pelbagai topik dan aras.</li><li>Semak langkah pengiraan, unit dan jawapan akhir.</li></ul><h3>Tip</h3><p>Buat latihan dalam tempoh masa yang ditetapkan dan simpan senarai kesalahan.</p>"},
+ sains:{title:"Sains — Kertas 1 & 2",html:"<h3>Fokus Ulang Kaji</h3><ul><li>Fahami konsep dan istilah utama.</li><li>Latih eksperimen, pemboleh ubah, data dan kesimpulan.</li><li>Buat latihan objektif dan subjektif.</li></ul><h3>Tip</h3><p>Utamakan kefahaman konsep sebelum menghafal fakta.</p>"},
+ pi:{title:"Pendidikan Islam",html:"<h3>Fokus Ulang Kaji</h3><ul><li>Ulang kaji fakta dan konsep mengikut bidang.</li><li>Fahami maksud, hukum, hikmah dan aplikasi dalam kehidupan.</li><li>Latih menjawab berdasarkan kehendak soalan.</li></ul><h3>Tip</h3><p>Bina nota ringkas dan lakukan kuiz kendiri untuk menguji ingatan.</p>"},
+ fizik:{title:"Fizik — Kertas 1 & 2",html:"<h3>Fokus Ulang Kaji</h3><ul><li>Fahami konsep, formula dan unit.</li><li>Latih pengiraan serta soalan berasaskan situasi.</li><li>Ulang kaji eksperimen dan tafsiran graf.</li></ul><h3>Tip</h3><p>Sentiasa tulis formula dan unit dengan jelas sebelum membuat pengiraan.</p>"},
+ kimia:{title:"Kimia — Kertas 1 & 2",html:"<h3>Fokus Ulang Kaji</h3><ul><li>Fahami konsep zarah, tindak balas dan persamaan kimia.</li><li>Latih pengiraan dan interpretasi eksperimen.</li><li>Ulang kaji pemerhatian, inferens dan kesimpulan.</li></ul><h3>Tip</h3><p>Latih menulis persamaan dan jawapan berstruktur dengan kemas.</p>"},
+ bio:{title:"Biologi — Kertas 1 & 2",html:"<h3>Fokus Ulang Kaji</h3><ul><li>Fahami proses biologi dan hubungan antara struktur dengan fungsi.</li><li>Latih rajah, eksperimen, data dan soalan struktur.</li><li>Ulang kaji istilah penting dengan tepat.</li></ul><h3>Tip</h3><p>Gunakan rajah dan penerangan ringkas untuk mengingat proses yang kompleks.</p>"},
+ sat:{title:"Sains Tambahan — Kertas 1 & 2",html:"<h3>Fokus Ulang Kaji</h3><ul><li>Kukuhkan konsep dan istilah utama.</li><li>Latih soalan pengiraan, eksperimen dan aplikasi konsep.</li><li>Semak unit, formula dan langkah penyelesaian.</li></ul><h3>Tip</h3><p>Buat latihan topikal dahulu, kemudian beralih kepada set lengkap.</p>"},
+ sps:{title:"Sains Sukan — Kertas 1 & 2",html:"<h3>Fokus Ulang Kaji</h3><ul><li>Fahami konsep kecergasan, latihan dan prestasi.</li><li>Ulang kaji prinsip latihan serta aplikasi dalam sukan.</li><li>Latih soalan berdasarkan situasi dan istilah.</li></ul><h3>Tip</h3><p>Hubungkan teori dengan contoh situasi sukan supaya lebih mudah difahami.</p>"},
+ psv:{title:"Pendidikan Seni Visual — Kertas 1 & 2",html:"<h3>Fokus Ulang Kaji</h3><ul><li>Ulang kaji istilah, unsur seni dan prinsip rekaan.</li><li>Fahami teknik, media dan proses penghasilan karya.</li><li>Latih apresiasi serta penerangan idea dengan jelas.</li></ul><h3>Tip</h3><p>Sediakan rujukan visual dan latihan secara berperingkat mengikut kehendak kertas.</p>"},
+ pert:{title:"Pertanian — Kertas 1 & 2",html:"<h3>Fokus Ulang Kaji</h3><ul><li>Fahami konsep pengurusan tanaman, tanah dan amalan pertanian.</li><li>Ulang kaji proses, istilah dan langkah kerja.</li><li>Latih soalan objektif dan struktur.</li></ul><h3>Tip</h3><p>Buat jadual ringkas proses dan istilah untuk ulang kaji pantas.</p>"},
+ srt:{title:"Sains Rumah Tangga — Kertas 1 & 2",html:"<h3>Fokus Ulang Kaji</h3><ul><li>Ulang kaji konsep pengurusan sumber, makanan, pakaian dan keluarga mengikut silibus.</li><li>Fahami langkah kerja dan aplikasi konsep.</li><li>Latih soalan objektif dan struktur.</li></ul><h3>Tip</h3><p>Gunakan jadual perbandingan dan langkah proses untuk memudahkan hafalan.</p>"},
+ niaga:{title:"Perniagaan — Kertas 1 & 2",html:"<h3>Fokus Ulang Kaji</h3><ul><li>Fahami konsep, fungsi dan istilah perniagaan.</li><li>Latih soalan aplikasi dan situasi.</li><li>Biasakan jawapan berstruktur mengikut kehendak markah.</li></ul><h3>Tip</h3><p>Kaitkan konsep dengan contoh perniagaan sebenar supaya lebih mudah diingati.</p>"},
+ akaun:{title:"Prinsip Perakaunan — Kertas 1 & 2",html:"<h3>Fokus Ulang Kaji</h3><ul><li>Kukuhkan asas debit dan kredit serta format akaun.</li><li>Latih penyata kewangan, pelarasan dan topik pengiraan.</li><li>Semak langkah kerja dan ketepatan angka.</li></ul><h3>Tip</h3><p>Buat latihan berulang dan semak punca kesilapan setiap kali selesai satu set.</p>"},
+ addmath:{title:"Matematik Tambahan — Kertas 1 & 2",html:"<h3>Fokus Ulang Kaji</h3><ul><li>Kuasai formula dan konsep asas setiap topik.</li><li>Latih soalan daripada mudah kepada kompleks.</li><li>Semak langkah pengiraan dan kaedah penyelesaian.</li></ul><h3>Tip</h3><p>Jangan hanya melihat contoh jawapan — cuba selesaikan sendiri sebelum membuat semakan.</p>"}
+};
+function openSubject(k){document.getElementById("subjectTitle").textContent=subjectData[k].title;document.getElementById("subjectInfo").innerHTML=subjectData[k].html;document.getElementById("subjectModal").classList.add("show")}
+function closeSubject(){document.getElementById("subjectModal").classList.remove("show")}
+
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeInfo()});
+update();setInterval(update,60000);
+</script>
+</body>
+</html>
